@@ -1,0 +1,24 @@
+summary: Fetch many Resturant
+tasks:
+  - id: check_location
+    fn: com.gs.datastore
+    data:
+      where:
+        location: <% (inputs.body.location) %>
+    tasks:
+        - id: check_menu
+          fn: com.gs.datastore
+          args: 
+             datasource: postgres
+          data:
+            where:
+              name: <% (inputs.body.menuItems) %>
+              and:
+                coupounCode: <% (inputs.body.coupounCode) %>
+              config:
+                method: Resturant.findMany
+
+
+
+
+      

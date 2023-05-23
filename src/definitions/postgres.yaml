@@ -1,0 +1,130 @@
+User:
+  type: object
+  properties:
+    email:
+      type: string
+    name:
+      type: string
+      nullable: true
+    role:
+      type: string
+      default: USER
+      enum:
+        - USER
+        - ADMIN
+Profile:
+  type: object
+  properties:
+    bio:
+      type: string
+    userId:
+      type: integer
+Post:
+  type: object
+  properties:
+    createdAt:
+      type: string
+      format: date-time
+    title:
+      type: string
+    published:
+      type: boolean
+      default: false
+    authorId:
+      type: integer
+    slug:
+      type: string
+    body:
+      type: string
+    description:
+      type: string
+      nullable: true
+Category:
+  type: object
+  properties:
+    name:
+      type: string
+Resturant:
+  type: object
+  properties:
+    createdAt:
+      type: string
+      format: date-time
+    since:  
+      type: string
+      format: date-time
+    opsStartTime:
+      type: string
+      format : date-time
+    opsEndTime:
+      type: string
+      format : date-time    
+    name:
+      type: string
+    isOpen:
+      type: boolean
+      default: false
+    ownerId:
+      type: integer
+    slug:
+      type: string
+    location:
+      type: string
+    description:
+      type: string
+      nullable: true
+Owner: 
+  type: object
+  properties:
+    name:
+      type: string
+  email:
+    type: string
+MenuItems:
+   type: object
+   properties:
+      name:
+        type: string
+      cuponCode:
+        type: array
+      price:
+        type: integer
+      restaurantId : 
+        type: integer
+Order:
+    type: object
+    properties:
+        placedAt:
+          type: string
+          format: date-time
+        fulfilledAt:
+          type: string
+          format: date-time
+        frmoResturant:
+          type: integer
+        restaurantId : 
+          type: integer
+        orderStatus:
+          type: string
+          default: NOT_INITIATED
+          enum:
+            - INITIATED
+            - NOT_INITIATED
+            - WAITING_FOR_APPROVAL_FROM_RESTAURANT
+            - WAITING_FOR_DELIVERY_PARTNER
+            - PLACED
+            - PICKUP_BY_DELIVERY_PARTNER
+            - DELIVERED
+            - READY_TO_PICKUP
+OrderItem:
+  type: object
+  properties:
+      menuItemId:
+        type: integer
+      qunatity:
+        type: integer
+      orderId:
+        type: integer
+
+
+

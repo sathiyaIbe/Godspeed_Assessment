@@ -1,0 +1,88 @@
+# ONE
+/postgres/post/:id.http.get:
+  summary: Fetch Post
+  description: Fetch Post from database
+  fn: com.biz.postgres.post.one
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+/postgres/post.http.post:
+  summary: Create a new Post
+  description: Create Post from database
+  fn: com.biz.postgres.post.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/postgres/Post'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+/postgres/post/:id.http.put:
+  summary: Update a Post
+  description: Update Post from database
+  fn: com.biz.postgres.post.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/postgres/Post'
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+/postgres/post/:id.http.delete:
+  summary: Delete a Post
+  description: Delete Post from database
+  fn: com.biz.postgres.post.delete
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+/postgres/post/search.http.post:
+  summary: Fetch multiple Post
+  description: Fetch multiple Post from database
+  fn: com.biz.postgres.post.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+

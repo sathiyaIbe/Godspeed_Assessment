@@ -1,0 +1,83 @@
+/postgres/resturant/:resturantId.http.get:
+  summary: Fetch Resturant
+  description: Fetch Resturant from database
+  fn: com.biz.postgres.resturant.one
+  params:
+    - name: resturantId
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+/postgres/resturant.http.post:
+  summary: Create a new Resturant
+  description: Create Resturant from database
+  fn: com.biz.postgres.resturant.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/postgres/Resturant'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+
+# UPDATE
+/postgres/resturant.http.put:
+  summary: Update a Resturant
+  description: Update Resturant from database
+  fn: com.biz.postgres.resturant.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/postgres/Resturant'
+ 
+    
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+/postgres/resturant/:resturantId.http.delete:
+  summary: Delete a Resturant
+  description: Delete Resturant from database
+  fn: com.biz.postgres.resturant.delete
+  params:
+    - name: resturantId
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+/postgres/resturant/search.http.post:
+  summary: Fetch multiple Resturant
+  description: Fetch multiple Resturant from database
+  fn: com.biz.postgres.resturant.filter
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array

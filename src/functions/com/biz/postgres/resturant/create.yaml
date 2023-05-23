@@ -1,0 +1,10 @@
+summary: Create Resturant
+tasks:
+  - id: postgres_resturant_create
+    fn: com.gs.datastore
+    args:
+      datasource: postgres
+      data:
+        data: <% inputs.body %>
+      config:
+        method: Resturant.create
